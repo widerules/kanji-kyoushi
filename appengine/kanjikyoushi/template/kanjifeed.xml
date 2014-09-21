@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<kanji_list>{% if action %}
+    <action>{{ action }}</action>{% endif %}{% if message %}
+    <message>{{ message }}</message>{% endif %}{% if count %}
+    <count>{{ count }}</count>{% endif %}{% if timestamp %}
+    <timestamp>{{ timestamp }}</timestamp>{% endif %}{% for kanji in kanji_list %}
+    <kanji>
+        <key>{{ kanji.key }}</key>
+        <kanji>{{ kanji.kanji }}</kanji>
+        <index>{{ kanji.index }}</index>
+    </kanji>{% endfor %}
+</kanji_list>
+

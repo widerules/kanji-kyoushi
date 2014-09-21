@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+
+		<p:tabView id="contentTabView" dynamic="true" cache="true"
+			effect="blind">
+
+			<p:tab id="tabQuiz" title="Quiz">
+				<ui:include src="quiz.xhtml" />
+			</p:tab>
+
+			<p:tab id="tabVocabTable" title="Vocabulary Table">
+				<ui:include src="vocabularyTable.xhtml" />
+			</p:tab>
+
+			<p:tab id="tabVocabGrid" title="Vocabulary Grid">
+				<ui:include src="vocabularyGrid.xhtml" />
+			</p:tab>
+
+			<p:tab id="tabSettings" title="Settings"
+				rendered="#{account.loggedIn}">
+				<ui:include src="settings.xhtml" />
+			</p:tab>
+
+		</p:tabView>
+
+	</ui:define>
+</ui:composition>

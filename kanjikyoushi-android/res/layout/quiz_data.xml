@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@android:id/tabhost"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+
+		<TabWidget
+			android:id="@android:id/tabs"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" />
+
+		<FrameLayout
+			android:id="@android:id/tabcontent"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+
+
+			<LinearLayout
+				android:id="@+id/quiz_data_stats"
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent">
+
+				<TableLayout
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:stretchColumns="1">
+
+					<TableRow>
+						<TextView
+							android:textSize="24px"
+							android:text="@string/label_total_count" />
+						<TextView
+							android:id="@+id/quiz_data_stats_total_count"
+							android:gravity="right"
+							android:textSize="24px" />
+					</TableRow>
+
+					<TableRow>
+						<TextView
+							android:textSize="24px"
+							android:text="@string/label_unseen_count" />
+
+						<TextView
+							android:id="@+id/quiz_data_stats_unseen_count"
+							android:gravity="right"
+							android:textSize="24px" />
+					</TableRow>
+
+					<TableRow>
+						<TextView
+							android:textSize="24px"
+							android:text="@string/label_last_update" />
+
+						<TextView
+							android:id="@+id/quiz_data_stats_last_update"
+							android:gravity="right"
+							android:textSize="22px" />
+					</TableRow>
+
+				</TableLayout>
+
+				<View
+					android:layout_width="fill_parent"
+					android:layout_height="2dip"
+					android:background="#FF909090" />
+
+				<ListView
+					android:id="@+id/quiz_data_strength_list"
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent" />
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/quiz_data_vocab"
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent">
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content">
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/label_search" />
+					<EditText
+						android:id="@+id/quiz_data_vocab_search"
+						android:layout_width="fill_parent"
+						android:layout_height="wrap_content"
+						android:background="@android:drawable/editbox_background" />
+				</LinearLayout>
+
+				<ListView
+					android:id="@+id/quiz_data_vocab_list"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content" />
+			</LinearLayout>
+
+			<!--			<TextView-->
+			<!--				android:id="@+id/quiz_data_debug"-->
+			<!--				android:layout_width="fill_parent"-->
+			<!--				android:layout_height="fill_parent"-->
+			<!--				android:textSize="16px" />-->
+
+		</FrameLayout>
+	</LinearLayout>
+</TabHost>

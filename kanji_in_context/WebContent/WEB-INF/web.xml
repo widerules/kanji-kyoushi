@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>kanji_in_context</display-name>
+  <welcome-file-list>
+    <welcome-file>quiz</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>TestingServlet</display-name>
+    <servlet-name>TestingServlet</servlet-name>
+    <servlet-class>kanjikyoushi.kinc.servlet.TestingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestingServlet</servlet-name>
+    <url-pattern>/testing</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>QuizServlet</display-name>
+    <servlet-name>QuizServlet</servlet-name>
+    <servlet-class>kanjikyoushi.kinc.servlet.QuizServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>QuizServlet</servlet-name>
+    <url-pattern>/quiz</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminServlet</display-name>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>kanjikyoushi.kinc.servlet.AdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+</web-app>

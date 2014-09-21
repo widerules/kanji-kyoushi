@@ -1,0 +1,32 @@
+application: kanjikyoushi
+version: 1-11
+runtime: python
+api_version: 1
+
+handlers:
+- url: /favicon.ico
+  static_files: img/favicon.ico
+  upload: img/favicon.ico
+
+- url: /vocabfeed
+  script: vocabfeed.py
+
+- url: /kanjifeed
+  script: kanjifeed.py
+
+- url: /quiz
+  script: quiz.py
+
+- url: /vocab
+  script: vocab.py
+  
+- url: /kanji
+  script: kanji.py
+  
+- url: /admin
+  script: admin.py
+  login: admin
+  
+- url: /*
+  script: kanjikyoushi.py
+

@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+
+{% block additional_head %}
+<style type="text/css">
+    div.form_title {
+        font-weight: bold;
+        font-size: 1.1em;
+        padding-bottom: .5em;
+    }
+    
+    div#console_link {
+        float: right;
+        font-size: .8em;
+    }
+    div#vocab_form { display: none; } 
+    div.feed_parameter { display: none; } 
+    
+    div#feed_url_display { 
+        display: none;
+        border: 2px gray inset;
+        background-color: lightgray;
+        padding: .5em;
+        margin: .5em;
+    } 
+    div#feed_url { display: inline; }
+    div#timestamp_display { 
+        display: inline;
+        font-style: italic;
+        font-size: .85em;
+        color: gray;
+    } 
+
+    label { float: left; width: 10em; } 
+</style>
+
+<script type="text/javascript">
+function changeFeedDisplay() {
+    typeSelect = document.getElementById('feed_type');
+
+    actionDisplay = document.getElementById('action_display');
+    kanjiIndexDisplay = document.getElementById('kanji_index_display');
+    kanjiCountDisplay = document.getElementById('kanji_count_display');
+    sinceDisplay = document.getElementById('since_display');
+
+    kanjiIndexDisplay.style.display = 'none';
+    kanjiCountDisplay.style.display = 'none';
+    sinceDisplay.style.display = 'none';
+
+    feedUrlDisplay = document.getElementById('feed_url_display');
+    feedResult = document.getElementById("feed_result");
+
+    feedUrlDisplay.style.display = 'none';
+    feedResult.style.display = 'none';
+
+    resetValues();
+
+    if (typeSelect.value == 'kanji') {
+
+        actionDisplay.style.display = 'none';
+
+    } else if (typeSelect.value == 'vocab') {
+
+        actionDisplay.style.display = 'block';
+
+        actionSelect = document.getElementById('action');
+    
+        if (actionSelect.value == '') {
+    
+        
+        } else if (actionSelect.value == 'get') {
+    
+            kanjiIndexDisplay.style.display = 'block';
+            kanjiCountDisplay.style.display = 'block';
+            sinceDisplay.style.display = 'none';
+        
+        } else if (actionSelect.value == 'update') {
+
+            kanjiIndexDisplay.style.display = 'block';
+            kanjiCountDisplay.style.display = 'none';
+            sinceDisplay.style.display = 'block';
+
+        } else if (actionSelect.value == 'validate') {
+
+            kanjiIndexDisplay.style.display = 'block';
+            kanjiCountDisplay.style.display = 'none';
+            sinceDisplay.style.display = 'none';
+    
+        }
+
+    }
+}
+
+function resetValues() {
+    document.getElementById("kanji_count").value = '';
+    document.getElementById("kanji_index").value = '';
+    document.getElementById("since").value = '';
+}
+
+function getFeed() {
+    type = document.getElementById('feed_type').value;
+    action = document.getElementById("action").value;
+    kanjiCount = document.getElementById("kanji_count").value;
+    since = document.getElementById("since").value;
+    kanjiIndex = document.getElementById("kanji_index").value;
+   
+    if (type == 'kanji') {
+
+        feedUrl = "/kanjifeed";
+
+    } else if (type == 'vocab') {
+
+        feedUrl = "/feed?action=" + action;
+
+        if (action == 'get') {
+            feedUrl += "&kanji_count=" + kanjiCount + "&kanji_index=" + kanjiIndex;
+        } else if (action == 'update') {
+            feedUrl += "&kanji_index=" + kanjiIndex + "&since=" + since;
+        } else if (action == 'validate') {
+            feedUrl += "&kanji_index=" + kanjiIndex;
+        }
+
+    }
+    
+    feedUrlDisplay = document.getElementById('feed_url_display');
+    feedUrlDisplay.style.display = 'block';
+    feedUrlText = document.getElementById('feed_url_text');
+    feedUrlText.innerHTML = feedUrl;
+
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+	    if (xmlhttp.readyState == 4) {
+	        responseText = xmlhttp.responseText.htmlEntities();
+            feedResult = document.getElementById("feed_result")
+            
+            feedResult.style.display = 'block';
+            feedResult.innerHTML = "<pre>" + responseText + "</pre>";
+        }
+	}
+	
+	xmlhttp.open("GET", feedUrl, true);
+	xmlhttp.send();
+}
+
+function updateTimestampDisplay() {
+    unix_timestamp = document.getElementById("since").value;
+    
+    if (unix_timestamp == '') {
+        document.getElementById("timestamp_display").innerHTML = '';
+    } else {
+        var date = new Date(unix_timestamp * 1000);
+        document.getElementById("timestamp_display").innerHTML = date.toUTCString();
+    }
+}
+
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="page_title">Kanji Kyoushi Administration</div>
+<div id="console_link"><a href="https://appengine.google.com/dashboard?&app_id=kanjikyoushi">GoogleApps Console</a></div>
+
+<div id="feed_form">
+    <div class="form_title">Vocabulary Feed</div>
+
+    <div id="feed_type_display">
+        <label for="feed_type">feed type</label>
+        <select name="feed_type" id="feed_type" onchange="changeFeedDisplay()">
+            <option value="vocab" selected="selected">vocab</option>
+            <option value="kanji">kanji</option>
+        </select>
+    </div>
+
+    <div id="action_display">
+        <label for="action">action</label>
+        <select name="action" id="action" onchange="changeFeedDisplay()">
+            <option value="" selected="selected">-=select action=-</option>
+            <option value="get">get</option>
+            <option value="update">update</option>
+            <option value="validate">validate</option>
+        </select>
+    </div>
+    
+    <div class="feed_parameter" id="kanji_index_display">
+        <label for="kanji_index">kanji_index</label>
+        <input type="text" name="kanji_index" id="kanji_index">
+    </div>
+    
+    <div class="feed_parameter" id="kanji_count_display">
+        <label for="kanji_count">kanji count</label>
+        <input type="text" name="kanji_count" id="kanji_count">
+    </div>
+    
+    <div class="feed_parameter" id="since_display">
+        <label for="since">since</label>
+        <input type="text" name="since" id="since" onkeyup="updateTimestampDisplay()">
+        <div id="timestamp_display"></div>
+    </div>
+    
+    <div>
+        <button type="button" onclick="getFeed();">get feed</button>
+    </div>
+</div>
+
+<div id="vocab_form">
+    <form action="/vocab" method="post">
+        <div class="form_title">Vocabulary Edit</div>
+        <div>
+            <select name="action" onchange="ActionChange(this.form)">
+                <option value="" selected="selected">-=select action=-</option>
+                <option value="add">add word</option>
+                <option value="edit">edit word</option>
+            </select>
+        </div>
+        <div><input type="text" id="word_input" name="word" style="display: none;" ></div>
+        <div><input type="submit" value="post"></div>
+    </form>
+</div>
+
+<div id="feed_url_display">
+    <label for="feed_url">request url</label>
+    <div id="feed_url_text" name="feed_url"></div>
+    <div id="feed_result"></div>
+</div>
+
+{% endblock %}
+

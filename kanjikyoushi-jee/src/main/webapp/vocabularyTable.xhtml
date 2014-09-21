@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<body>
+	<ui:composition>
+
+		<h:form>
+
+			<p:growl id="growl" showDetail="true" sticky="false" />
+
+			<p:dataTable var="vocab_word" value="#{vocabularyWords}"
+				paginator="true" rows="10">
+
+				<!-- 				
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Id" />
+					</f:facet>
+					<h:outputText value="#{vocab_word.id}" />
+				</p:column>
+				 -->
+
+				<p:ajax event="rowToggle" />
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Word" />
+					</f:facet>
+					<h:outputText value="#{vocab_word.word}" />
+				</p:column>
+
+				<p:column>
+					<p:rowToggler />
+				</p:column>
+
+				<!--        
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Readings" />
+					</f:facet>
+					<p:dataList var="reading" value="#{vocab_word.readings}">
+						<h:outputText value="#{reading}" />
+					</p:dataList>
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Meanings" />
+					</f:facet>
+					<p:dataList var="meaning" value="#{vocab_word.meanings}">
+						<h:outputText value="#{meaning}" />
+					</p:dataList>
+				</p:column>
+         -->
+
+				<p:rowExpansion>
+
+					<p:dataList var="reading" value="#{vocab_word.readings}">
+						<h:outputText value="#{reading}" />
+					</p:dataList>
+
+					<p:dataList var="meaning" value="#{vocab_word.meanings}">
+						<h:outputText value="#{meaning}" />
+					</p:dataList>
+
+				</p:rowExpansion>
+
+			</p:dataTable>
+
+			<h:panelGrid columns="2">
+
+				<h:outputLabel for="new_word" value="new word" />
+				<h:inputText name="new_word" id="new_word"
+					value="#{vocabulary.newWord.word}" />
+				<h:commandButton id="register" action="#{vocabulary.register}"
+					value="Register" styleClass="register" />
+				<p:messages autoUpdate="true" />
+
+			</h:panelGrid>
+
+		</h:form>
+
+	</ui:composition>
+</body>
+</html>

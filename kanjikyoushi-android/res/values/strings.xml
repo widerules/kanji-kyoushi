@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Kanji Kyoushi</string>
+	<string name="email">androidkanjikyoushi@gmail.com</string>
+
+	<string name="strength">strength</string>
+	<string name="lastseen">last seen</string>
+	<string name="neverseen">never seen</string>
+	<string name="no_words">(empty list)</string>
+
+	<string name="menu_data">vocabulary</string>
+	<string name="menu_more_words">more words</string>
+	<string name="menu_update_words">update</string>
+	<string name="menu_validate_words">validate</string>
+	<string name="menu_feedback">send feedback</string>
+	<string name="menu_skip">skip</string>
+	<string name="menu_prev">previous word</string>
+	<string name="menu_word">word info</string>
+	<string name="menu_settings">settings</string>
+	<string name="menu_restore_default">restore default</string>
+
+	<string name="button_yes">yes</string>
+	<string name="button_no">no</string>
+	<string name="button_close">close</string>
+
+	<string name="feed_title"></string>
+	<string name="feed_title_new">New Vocabulary Words</string>
+	<string name="feed_title_update">Vocabulary Update</string>
+	<string name="feed_title_validate">Vocabulary Validation</string>
+	<string name="feed_reading">retrieving vocabulary data from the Internet
+	</string>
+	<string name="feed_processing">processing vocabulary data</string>
+	<string name="feed_no_connection">no network connection, aborting</string>
+	<string name="feed_error">error downloading vocabulary data, aborting
+	</string>
+	<string name="feed_continue_in_background">download will continue in the background</string>
+	<string name="feed_final_msg_format">%d vocabulary processed</string>
+	<string name="feed_final_msg_format_new">%d new vocabulary loaded</string>
+	<string name="feed_final_msg_format_update">vocabulary data updated for %d words</string>
+	<string name="feed_final_msg_format_validate">%d words validated</string>
+
+	<string name="msg_confirm">Are you sure?</string>
+	<string name="msg_confirm_more">Would you like to get more words?</string>
+	<string name="msg_confirm_update">This will load vocabulary updates from the server.
+		Are you sure?</string>
+	<string name="msg_confirm_validate">This will validate all the words in your vocabulary
+		list. This may take a few minutes. Are you sure?</string>
+	<string name="msg_confirm_delete_all">This will delete all the words in your vocabulary
+		list. You will have to download your words again. Are you sure?
+	</string>
+	<string name="msg_all_deleted">All vocabulary words have been deleted</string>
+
+	<string name="msg_incorrect">incorrect, answer is</string>
+	<string name="msg_you_answered">you answered </string>
+	<string name="msg_already_downloading">already downloading vocabulary data</string>
+	<string name="msg_option_unavailable">this option is not yet available</string>
+
+	<string name="vocab_feed">http://kanjikyoushi.appspot.com/feed</string>
+
+	<string name="data_tab_vocablist">vocabulary list</string>
+	<string name="data_tab_stats">statistics</string>
+	<string name="data_tab_debug">debug</string>
+
+	<string name="label_search">search</string>
+	<string name="label_total_count">words</string>
+	<string name="label_unseen_count">unseen</string>
+	<string name="label_zero_strength">(zero stars)</string>
+	<string name="label_feed_count">Download Size</string>
+	<string name="label_feed_count_description">The number of new kanji to download from the server
+		per request. Each kanji may have several associated words that will be
+		downloaded. Downloading many words at once may take a long time.
+	</string>
+	<string name="label_randomness">Randomness</string>
+	<string name="label_randomness_description">A measure of how random the selection of vocabulary
+		words will be. The greater the randomness, the less weight is given to
+		the word\'s age and strength</string>
+	<string name="label_quiz_type">Quiz Type</string>
+	<string name="label_quiz_type_description">Determines the type of questions asked, either
+		readings only, meanings only, or both</string>
+	<string name="label_last_update">last update</string>
+	<string name="label_reset_vocab">Reset Vocabulary Data</string>
+	<string name="label_reset_vocab_description">Remove all words from your vocabulary list</string>
+
+	<string name="prompt_quiz_type">select a quiz type</string>
+	<string name="prompt_feed_count">select download size</string>
+	<string name="prompt_randomness">select randomness</string>
+
+	<string-array name="array_quiz_type">
+		<item>readings only</item>
+		<item>meanings only</item>
+		<item>readings and meanings</item>
+	</string-array>
+
+	<string-array name="array_feed_count">
+		<item>5</item>
+		<item>10</item>
+		<item>25</item>
+	</string-array>
+
+	<string-array name="array_randomness">
+		<item>completely random</item>
+		<item>mostly random</item>
+		<item>somewhat random</item>
+		<item>slightly random</item>
+		<item>no randomness</item>
+	</string-array>
+
+</resources>

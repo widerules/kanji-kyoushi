@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block additional_head %}
+<style type="text/css">
+</style>
+
+<script type="text/javascript">
+</script>
+{% endblock %}
+
+{% block body_element %}{% endblock %}
+
+{% block content %}
+{% if kanji %}
+<div id="div_kanji">
+    <div id="kanji" class="kanji, page_title">{{ kanji.kanji }}</div>
+        
+    <div id="index" class="kanji_info">index: {{ kanji.index }}</div>
+</div>
+{% endif %}
+{% endblock %}
+

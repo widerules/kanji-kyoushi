@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block additional_head %}
+<style type="text/css">
+div.kanji_list { background: #CCC; margin: 2em; padding: .5em; overflow: auto;} 
+div.kanji { float: left; min-width: 25%;}
+div.page_nav   { font-size: 0.8em; color: #933; text-align: right; float: right; }
+div.page_nav a { color: #933; padding: 3px; }
+div.page_nav a.curr_link { border: 1px solid #933; }
+div.page_nav a:link, div.page_nav a:visited { text-decoration:none; }
+div.page_nav a:hover, div.page_nav a:active { text-decoration:underline; }
+
+div.kanji a { color: #600 }
+div.kanji a:link, div.kanji a:visited { text-decoration:none; }
+div.kanji a:hover, div.kanji a:active { text-decoration:underline; }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page_title">Kanji</div>
+
+<div class="page_nav">{% for page_link in page_links %}
+<a {% ifequal page_link.0 bookmark %}class="curr_link"
+    {% endifequal %}href="{{ page_link.1 }}">{{ page_link.0 }}</a>{% endfor %}</div>
+
+{% if kanji_list %}
+<div class="kanji_list">
+{% for kanji in kanji_list %}
+    <div>
+        <div class="kanji">
+            <a href="kanji?kanji={{ kanji.kanji|escape }}">{{ kanji.kanji }}</a>
+        </div>
+    </div>
+
+{% endfor %}
+</div>
+{% endif %}
+{% endblock %}
+

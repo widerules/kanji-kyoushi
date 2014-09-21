@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Kanjikyoushi</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<h:outputStylesheet name="style/main.css" />
+</h:head>
+<h:body>
+
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="north">
+
+			<div id="login">
+				<h:form rendered="#{account.loggedIn}">
+					<h:outputText value="#{account.loginId}" />
+					<p:commandButton action="#{account.logout}" value="logout"
+						id="account-logout" ajax="false" />
+				</h:form>
+
+				<h:form rendered="#{not account.loggedIn}">
+					<p:commandButton action="#{account.login}" value="Open Id Login"
+						id="account-login" />
+				</h:form>
+			</div>
+
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<ui:insert name="content">[Template content will be inserted here]</ui:insert>
+		</p:layoutUnit>
+
+	</p:layout>
+
+</h:body>
+</html>

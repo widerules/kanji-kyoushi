@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<vocabulary_list>{% if action %}
+    <action>{{ action }}</action>{% endif %}{% if index %}
+    <index>{{ index }}</index>{% endif %}{% if message %}
+    <message>{{ message }}</message>{% endif %}{% if count %}
+    <count>{{ count }}</count>{% endif %}{% if timestamp %}
+    <timestamp>{{ timestamp }}</timestamp>{% endif %}{% for word in words %}
+    <vocabword>
+        <key>{{ word.key }}</key>
+        <word>{{ word.word }}</word>
+        <index>{{ word.kanji_index }}</index>
+        <active>{{ word.active }}</active>{% for reading in word.readings %}
+        <reading>{{ reading }}</reading>{% endfor %}{% for meaning in word.meanings %}
+        <meaning>{{ meaning }}</meaning>{% endfor %}
+    </vocabword>{% endfor %}
+</vocabulary_list>
+

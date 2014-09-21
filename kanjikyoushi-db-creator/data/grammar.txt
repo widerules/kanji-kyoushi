@@ -1,0 +1,86 @@
+1
+10
+11
+2
+3
+4
+5
+6
+7
+8
+9
+a
+abbr
+adj
+adj-na
+adj-no
+adj-pn
+adv
+ateji
+col
+conj
+de:
+de: Arbeit
+exp
+expr
+fr:
+fr: jupon
+gadj
+gikun
+gn
+gn-adv
+gno-adj
+gno-adv
+gn-suf
+hon
+hum
+ik
+iK
+int
+intrans-verb
+io
+kana only
+n
+n-adv
+nl: Kop
+n-suf
+n-t
+num
+oK
+P
+pol
+pref
+prt
+pt:
+pt: bota~o
+pt: pan
+pt: tabaco
+ru-v
+sl
+suf
+this form only used as adverb
+uk
+uv
+v1
+v5aru
+v5b
+v5g
+v5k
+v5k-s
+v5m
+v5n
+v5r
+v5r-i
+v5s
+v5t
+v5u
+vi
+vk
+vocative
+vs
+vs-i
+vs-s
+vt
+with te-form verb
+X
+

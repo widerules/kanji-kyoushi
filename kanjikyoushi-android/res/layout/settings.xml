@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:orientation="vertical">
+
+		<TextView
+			android:textSize="24px"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/label_quiz_type" />
+		<TextView
+			android:textSize="14px"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/label_quiz_type_description" />
+		<Spinner
+			android:id="@+id/spinner_quiz_type"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:prompt="@string/prompt_quiz_type" />
+
+		<TextView
+			android:textSize="24px"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/label_randomness" />
+		<TextView
+			android:textSize="14px"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/label_randomness_description" />
+		<Spinner
+			android:id="@+id/spinner_randomness"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:prompt="@string/prompt_randomness" />
+
+		<TextView
+			android:textSize="24px"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/label_feed_count" />
+		<TextView
+			android:textSize="14px"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/label_feed_count_description" />
+		<Spinner
+			android:id="@+id/spinner_feed_count"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:prompt="@string/prompt_feed_count" />
+
+		<TextView
+			android:textSize="24px"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/label_reset_vocab" />
+		<TextView
+			android:textSize="14px"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/label_reset_vocab_description" />
+		<Button
+			android:id="@+id/button_reset_vocab"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/label_reset_vocab" />
+
+	</LinearLayout>
+</ScrollView>

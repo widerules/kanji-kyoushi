@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/kanji_in_context" docBase="kanji_in_context"
+	crossContext="true" reloadable="true" debug="1">
+	<Resource name="jdbc/postgres" auth="Container" type="javax.sql.DataSource"
+		maxActive="100" maxIdle="30" maxWait="20000" removeAbandoned="true"
+		removeAbandonedTimeout="120" username="admin" password="adminpass"
+		driverClassName="org.postgresql.Driver" url="jdbc:postgresql://localhost:5432/kanji_in_context" />
+</Context>

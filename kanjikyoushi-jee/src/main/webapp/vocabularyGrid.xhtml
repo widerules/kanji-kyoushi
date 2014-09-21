@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<body>
+	<ui:composition>
+
+		<h:form>
+
+			<p:dataGrid var="vocab_word" value="#{vocabularyWords}"
+				paginator="true" rows="10" rowsPerPageTemplate="5,10,15,20">
+
+				<p:panel>
+					<h:outputText value="#{vocab_word.word}" />
+				</p:panel>
+
+			</p:dataGrid>
+
+			<p:dialog header="VocabWord Detail" widgetVar="wordDialog"
+				modal="true">
+
+				<p:outputPanel layout="block"></p:outputPanel>
+
+				<p:dataList var="reading" value="#{selectedWord.readings}">
+					<h:outputText value="#{reading}" />
+				</p:dataList>
+
+				<p:dataList var="meaning" value="#{vocab_word.meanings}">
+					<h:outputText value="#{meaning}" />
+				</p:dataList>
+
+			</p:dialog>
+
+		</h:form>
+
+	</ui:composition>
+</body>
+</html>

@@ -1,0 +1,86 @@
+{% comment %}
+base template
+
+expected template values:
+user (optional) - user object
+url - login/logout url
+link_text - display text for login/logout link
+date_string - footer date string
+{% endcomment %}
+
+<html>
+<head>
+<title>{% block title %}Kanji Kyoushi{% endblock %}</title>
+<script type="text/javascript">
+String.prototype.htmlEntities = function () {
+   return this.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39').replace(/"/g,'&quot');
+};
+
+String.prototype.jsEscape = function () {
+   return this.replace(/'/g,'\\\'').replace(/"/g,'\\"');
+};
+</script>
+
+<style type="text/css">
+    body { background-color: white; }
+    div  { margin: 0; padding: 0; border: 0px solid black; }
+
+    /* CONTAINER STYLE */
+    div#container { width: 90%; min-width: 800px; margin: 0px auto; background-color: white; line-height: 130%; }
+
+    /* NAV BAR STYLE */
+    div#nav_bar { width: 180px; float: left; margin: 0; padding: 1em; }
+    div#nav_bar a { display: block; padding: .2em .2em .2em .5em; width: 160; background-color: #600; border-bottom: 1px solid #eee; }
+    div#nav_bar a:link, div#nav_bar a:visited { color: #EEE; text-decoration: none; }
+    div#nav_bar a:hover { background-color: #300; color: #fff; }
+    div#nav_bar ul { margin-left: 0; padding-left: 0; list-style: none; }
+    div#nav_bar ul li a {  } 
+
+    /* SEARCH STYLE */
+    form#search_form { display: inline; }
+
+    /* USER INFO STYLE */
+    div#user_info { margin-left: 220px; text-align: right; padding: .2em; }
+    div#user_info a { margin: 0em 1em; }
+    
+    /* MAIN STYLE */
+    div#main { margin-left: 220px; padding: 1em; }
+    div.page_title { font-size: 1.5em; padding: .5em; margin: 3px; border-bottom: 3px solid #C00; }
+
+    /* FOOTER STYLE */
+    div#footer { clear: both; margin: 0; padding: .5em; background-color: #ddd; font-size: .8em; text-align: right; }
+</style>
+{% block additional_head %}{% endblock %}
+</head>
+
+<body {% block body_element %}{% endblock %}>
+<div id="container">
+
+<div id="nav_bar">{% block nav_bar %}
+    <ul>
+        <li><a href="/" title="home">ホーム</a></li>
+        {% if user %}
+        <li><a href="/" title="quiz">クイズ</a></li>
+        <li><a href="/vocab" title="vocabulary">語彙</a></li>
+        <li><a href="/kanji" title="kanji">漢字</a></li>
+        {% endif %}
+        {% if admin %}<li><a href="/admin" title="administration">管理</a></li>{% endif %}
+    </ul>
+    <img src="http://code.google.com/appengine/images/appengine-noborder-120x30.gif" 
+        alt="Powered by Google App Engine" />{% endblock %}
+</div>
+
+<div id="user_info">
+    {% if user %}{{ user.nickname }}{% endif %}<a href="{{ url }}">{{ link_text }}</a>
+    <form id="search_form" name="search_form" action="/vocab" method="get">
+        <input type="text" id="search_string" name="search_string" value="{{ search_string }}">
+        <input type="submit" value="search">
+    </form>
+</div>
+
+<div id="main">{% block content %}{% endblock %}</div>
+<div id="footer">{{ date_string }}</div>
+
+</div>
+</body>
+</html>

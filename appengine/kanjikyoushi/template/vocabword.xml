@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<response>{% if message %}
+    <message>{{ message|escape }}</message>{% endif %}{% if word %}
+    <vocabword>
+        <key>{{ word.key }}</key>
+        <word>{{ word.word }}</word>
+        <kanji_index>{{ word.kanji_index }}</kanji_index>
+        <active>{{ word.active }}</active>
+        <modified>{{ word.modified|date:"m/d/Y H:i:s" }}</modified>{% for reading in word.readings %}
+        <reading>{{ reading|escape }}</reading>{% endfor %}{% for meaning in word.meanings %}
+        <meaning>{{ meaning|escape }}</meaning>{% endfor %}
+    </vocabword>{% endif %}
+</response>
+

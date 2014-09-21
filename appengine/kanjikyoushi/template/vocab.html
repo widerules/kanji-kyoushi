@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block additional_head %}
+<style type="text/css">
+div#readings, div#meanings {
+    margin-top: 1em;
+}
+
+div.word_info {
+    display: inline;
+    font-size: .8em;
+    font-style: italic;
+    margin-right: 2em;
+}
+
+div.type_label {
+    display: inline;
+    font-size: .8em;
+    color: #999;
+}
+div.word_data {
+    margin: 0 0 0 1em;
+}
+.change {
+    display: inline;
+    font-size: .7em;
+    color: #C66;
+}
+a.edit {
+    margin-left: 1em;
+}
+a.change:link, a.change:visited { text-decoration:none; }
+a.change:hover, a.change:active { text-decoration:underline; }
+</style>
+{% endblock %}
+
+{% block content %}
+{% if word %}
+<div id="vocab_word">
+    <form action="/vocab" method="post">
+        <input type="hidden" name="key" value="{{ word.key }}">
+        <div id="word" class="word, page_title">{{ word.word }}</div>
+        
+        <div id="kanji_index" class="word_info">漢字： 
+        {% for kanji in related_kanji_list %}
+            <a href="kanji?kanji={{ kanji|escape }}">{{ kanji }}</a>&nbsp;
+        {% endfor %}
+        </div>
+        <div id="modified" class="word_info">modified: {{ word.modified|date:"m/d/Y H:i:s" }}</div>
+        <div id="active" class="word_info">active: {{ word.active }}</div>
+
+        <div id="readings"><div class="type_label">読み方</div>
+            {% for reading in word.readings %}<div class="word_data">
+                {{ reading|escape }}
+            </div>{% endfor %}
+        </div>
+
+        <div id="meanings"><div class="type_label">意味</div>
+            {% for meaning in word.meanings %}<div class="word_data">
+                {{ meaning|escape }}
+            </div>{% endfor %}
+        </div>
+
+    </form>
+</div>
+{% endif %}
+{% endblock %}
+
